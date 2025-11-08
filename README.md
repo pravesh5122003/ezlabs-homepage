@@ -1,7 +1,7 @@
 # 🎬 EZ Labs Frontend Assessment
 
-**Live Project:** [https://ezlabs-homepage.vercel.app]  
-**GitHub Repository:** [https://github.com/pravesh5122003/ezlabs-homepage]
+**Live Project:** [https://ezlabs-homepage.vercel.app] (https://ezlabs-homepage.vercel.app)
+**GitHub Repository:** [https://github.com/pravesh5122003/ezlabs-homepage](https://github.com/pravesh5122003/ezlabs-homepage)
 
 ---
 
@@ -12,7 +12,6 @@ It is a fully responsive, pixel-perfect React website designed according to the 
 
 The website represents **EZ Labs’ creative and technology-driven brand**, showcasing sections like:
 - Hero Section   
-- About Us  
 - Services (Film Production, Branding, Art Curation)  
 - Portfolio  
 - Contact Form (with validation + API integration)
@@ -22,6 +21,7 @@ The website represents **EZ Labs’ creative and technology-driven brand**, show
 ## 🧩 Features Implemented
 
 ✅ Fully Responsive Layout (Desktop → Tablet → Mobile)  
+✅ Light/Dark Mode Toggle
 ✅ Animated Hero Section using **Framer Motion**  
 ✅ About, Services, and Portfolio Sections 
 ✅ Smooth Scroll Navigation between sections  
@@ -38,11 +38,9 @@ The website represents **EZ Labs’ creative and technology-driven brand**, show
 ### 🌗 Dark & Light Mode
 | Light Mode | Dark Mode |
 |-------------|------------|
-| ![Light Mode Screenshot](link1) | ![Dark Mode Screenshot](link2) |
+| ![Light Mode Screenshot](./public/screenshot3.png) | ![Dark Mode Screenshot](./public/screenshot2.png) |
 
-![Postman Screenshot](your-screenshot-link-here)
-
-*(Add your homepage screenshot here to visually represent the project.)*
+![Postman Screenshot](./public/screenshot4.png)
 
 ---
 
