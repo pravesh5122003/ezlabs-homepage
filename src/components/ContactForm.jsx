@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -53,63 +52,70 @@ export default function ContactForm() {
   return (
     <section
       id="contact"
-      className="py-20 overflow-hidden transition-colors duration-700 bg-gradient-to-br from-orange-50 via-white to-orange-100 dark:from-gray-900 dark:via-gray-800 dark:to-black"
-
+      className="py-24 bg-gradient-to-br from-blue-50 via-indigo-50 to-white 
+                 dark:from-gray-900 dark:via-gray-800 dark:to-black 
+                 overflow-hidden transition-colors duration-700"
     >
-      {/* ⬆️ little wider than earlier */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
-        {/* Toast notifications */}
+      <div className="max-w-5xl mx-auto px-6 relative">
         <Toaster position="top-center" reverseOrder={false} />
 
-        {/* Background accent */}
+        {/* 🔵 Floating Background Lights */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2 }}
-          className="absolute -top-20 -right-16 w-80 h-80 bg-gradient-to-tr from-orange-300/30 to-yellow-100/30 rounded-full blur-3xl hidden md:block"
-        ></motion.div>
+          animate={{ opacity: 0.5 }}
+          transition={{ duration: 1.5 }}
+          className="absolute -top-32 -left-24 w-96 h-96 bg-blue-400/30 rounded-full blur-[100px]"
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.4 }}
+          transition={{ duration: 1.8 }}
+          className="absolute -bottom-32 -right-20 w-96 h-96 bg-indigo-400/25 rounded-full blur-[100px]"
+        />
 
-        {/* Heading */}
+        {/* ✨ Heading */}
         <motion.h2
-          className="text-3xl md:text-4xl font-extrabold text-center text-gray-800 dark:text-gray-100 mb-12 relative z-10 transition-colors duration-500"
+          className="text-4xl md:text-5xl font-extrabold text-center mb-14 
+                     bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 
+                     bg-clip-text text-transparent dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          Let’s Build Something Great ✉️
+           Collaborate Us 🫂
         </motion.h2>
 
-        {/* Contact form */}
+        {/* 🧊 Contact Form Card */}
         <motion.form
           onSubmit={handleSubmit(onSubmit)}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="bg-white/90 dark:bg-gray-900/80 backdrop-blur-sm shadow-xl dark:shadow-[0_8px_30px_rgba(255,255,255,0.08)] rounded-2xl p-6 sm:p-8 space-y-6 relative z-10 max-w-2xl mx-auto transition-all duration-700"
+          transition={{ duration: 0.9 }}
+          className="bg-white/30 dark:bg-gray-900/60 backdrop-blur-lg border border-white/40 
+                     shadow-[0_10px_50px_rgba(30,64,175,0.15)] dark:shadow-[0_10px_50px_rgba(255,255,255,0.05)]
+                     rounded-3xl p-10 sm:p-12 space-y-8 relative z-10 max-w-2xl mx-auto transition-all duration-700"
         >
-          {/* Name */}
+          {/* 🧾 Name */}
           <div>
-            <label className="block text-gray-700 dark:text-gray-200 font-medium mb-1 transition-colors duration-500">
+            <label className="block text-lg font-medium text-gray-700 dark:text-gray-200 mb-2">
               Full Name
             </label>
             <input
               type="text"
               {...register("name", { required: "Name is required" })}
-              placeholder="Enter your name"
-              className={`mt-1 w-full rounded-lg border p-3 transition-all duration-300 focus:ring-2 focus:ring-orange-400 outline-none ${
-                errors.name ? "border-red-500" : "border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
-              }`}
+              placeholder="John Doe"
+              className={`w-full p-4 rounded-xl border bg-white/70 dark:bg-gray-800/80 
+                         focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-300 
+                         ${errors.name ? "border-red-500" : "border-gray-300 dark:border-gray-700 dark:text-gray-100"}`}
             />
             {errors.name && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.name.message}
-              </p>
+              <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
             )}
           </div>
 
-          {/* Email */}
+          {/* ✉️ Email */}
           <div>
-            <label className="block text-gray-700 font-medium mb-1">
+            <label className="block text-lg font-medium text-gray-700 dark:text-gray-200 mb-2">
               Email
             </label>
             <input
@@ -122,20 +128,18 @@ export default function ContactForm() {
                 },
               })}
               placeholder="yourname@example.com"
-              className={`mt-1 w-full rounded-lg border p-3 transition-all duration-300 focus:ring-2 focus:ring-orange-400 outline-none ${
-                errors.email ? "border-red-500" : "border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
-              }`}
+              className={`w-full p-4 rounded-xl border bg-white/70 dark:bg-gray-800/80 
+                         focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-300 
+                         ${errors.email ? "border-red-500" : "border-gray-300 dark:border-gray-700 dark:text-gray-100"}`}
             />
             {errors.email && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.email.message}
-              </p>
+              <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
             )}
           </div>
 
-          {/* Phone */}
+          {/* 📞 Phone */}
           <div>
-            <label className="block text-gray-700 font-medium mb-1">
+            <label className="block text-lg font-medium text-gray-700 dark:text-gray-200 mb-2">
               Phone Number
             </label>
             <input
@@ -150,30 +154,28 @@ export default function ContactForm() {
               onInput={(e) =>
                 (e.target.value = e.target.value.replace(/[^0-9]/g, ""))
               }
-              placeholder="Enter your phone number"
-              className={`mt-1 w-full rounded-lg border p-3 transition-all duration-300 focus:ring-2 focus:ring-orange-400 outline-none ${
-                errors.phone ? "border-red-500" : "border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
-              }`}
+              placeholder="9876543210"
               maxLength={10}
+              className={`w-full p-4 rounded-xl border bg-white/70 dark:bg-gray-800/80 
+                         focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-300 
+                         ${errors.phone ? "border-red-500" : "border-gray-300 dark:border-gray-700 dark:text-gray-100"}`}
             />
             {errors.phone && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.phone.message}
-              </p>
+              <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
             )}
           </div>
 
-          {/* Message */}
+          {/* 💬 Message */}
           <div>
-            <label className="block text-gray-700 font-medium mb-1">
+            <label className="block text-lg font-medium text-gray-700 dark:text-gray-200 mb-2">
               Message
             </label>
             <textarea
               {...register("message", { required: "Message is required" })}
-              placeholder="Write your message here..."
-              className={`mt-1 w-full rounded-lg border p-3 h-32 resize-none transition-all duration-300 focus:ring-2 focus:ring-orange-400 outline-none ${
-                errors.message ? "border-red-500" : "border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
-              }`}
+              placeholder="Tell us about your project..."
+              className={`w-full p-4 h-36 rounded-xl border bg-white/70 dark:bg-gray-800/80 
+                         focus:ring-2 focus:ring-indigo-500 outline-none resize-none transition-all duration-300 
+                         ${errors.message ? "border-red-500" : "border-gray-300 dark:border-gray-700 dark:text-gray-100"}`}
             ></textarea>
             {errors.message && (
               <p className="text-red-500 text-sm mt-1">
@@ -182,53 +184,59 @@ export default function ContactForm() {
             )}
           </div>
 
-          {/* Buttons */}
-          <div className="flex gap-3 pt-4 justify-center md:justify-start">
+          {/* 🚀 Buttons */}
+          <div className="flex gap-4 justify-center md:justify-start pt-4">
             {/* Submit */}
             <motion.button
-  type="submit"
-  disabled={loading}
-  whileHover={!loading ? { y: -2 } : {}}
-  whileTap={!loading ? { y: 0 } : {}}
-  className={`min-w-[130px] px-6 py-3 rounded-xl text-white font-medium transition-all duration-300
-    shadow-[0_10px_25px_rgba(249,115,22,0.35)]
-    ${
-      loading
-        ? "bg-gray-400 cursor-not-allowed shadow-none"
-        : "bg-orange-600 hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600 dark:shadow-[0_10px_25px_rgba(255,255,255,0.08)]"
-    }`}
->
-  {loading ? "Submitting..." : "Submit"}
-</motion.button>
+              type="submit"
+              disabled={loading}
+              whileHover={!loading ? { y: -3, scale: 1.05 } : {}}
+              whileTap={!loading ? { y: 0, scale: 0.98 } : {}}
+              className={`min-w-[130px] px-8 py-3 rounded-xl text-white font-semibold 
+                          bg-gradient-to-r from-blue-600 to-indigo-600 
+                          shadow-[0_10px_25px_rgba(79,70,229,0.35)]
+                          hover:shadow-[0_15px_30px_rgba(79,70,229,0.45)]
+                          transition-all duration-300
+                          ${
+                            loading
+                              ? "bg-gray-400 cursor-not-allowed shadow-none"
+                              : "dark:from-blue-500 dark:to-indigo-500"
+                          }`}
+            >
+              {loading ? "Submitting..." : "Submit"}
+            </motion.button>
 
             {/* Reset */}
             <motion.button
   type="button"
   disabled={loading}
-  whileHover={!loading ? { y: -2 } : {}}
-  whileTap={!loading ? { y: 0 } : {}}
+  whileHover={!loading ? { y: -3, scale: 1.05 } : {}}
+  whileTap={!loading ? { y: 0, scale: 0.98 } : {}}
   onClick={() => {
     reset();
     setStatusMsg("");
   }}
-  className={`min-w-[130px] px-6 py-3 rounded-xl font-medium border transition-all duration-300
-    ${
-      loading
-        ? "opacity-50 cursor-not-allowed border-gray-300 text-gray-400"
-        : "border-orange-600 text-orange-600 bg-white hover:bg-orange-50 shadow-[0_10px_25px_rgba(249,115,22,0.15)] dark:border-orange-400 dark:text-orange-400 dark:bg-gray-900 dark:hover:bg-orange-400 dark:hover:text-white dark:shadow-[0_10px_25px_rgba(255,255,255,0.08)]"
-    }`}
+  className={`min-w-[130px] px-8 py-3 rounded-xl font-semibold border-2 transition-all duration-300 ${
+    loading
+      ? "opacity-50 cursor-not-allowed border-gray-400 text-gray-400"
+      : "border-blue-600 text-blue-600 bg-transparent hover:bg-blue-50 dark:border-indigo-400 dark:text-indigo-400 dark:hover:bg-indigo-500 dark:hover:text-white"
+  }`}
 >
   Reset
 </motion.button>
 
-
           </div>
 
-          {/* Status message */}
+          {/* 💚 Status message */}
           {statusMsg && (
-            <p className="mt-6 text-center text-green-600 dark:text-green-400 font-semibold text-lg transition-colors duration-500">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="mt-6 text-center text-green-600 dark:text-green-400 font-semibold text-lg"
+            >
               {statusMsg}
-            </p>
+            </motion.p>
           )}
         </motion.form>
       </div>
