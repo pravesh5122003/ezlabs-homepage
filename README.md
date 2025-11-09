@@ -1,4 +1,4 @@
-# 🎬 EZ Film Frontend Assessment
+# 🎬 EZ Film Frontend Website
 
 **Live Project:** [https://ezlabs-homepage.vercel.app] (https://ezlabs-homepage.vercel.app)
 **GitHub Repository:** [https://github.com/pravesh5122003/ezlabs-homepage](https://github.com/pravesh5122003/ezlabs-homepage)
@@ -7,7 +7,7 @@
 
 ## 🚀 Project Overview
 
-This project was developed as part of the **EZ Film Frontend Assessment**.  
+This project was developed as part of the **EZ Film Frontend Website**.  
 It is a fully responsive, pixel-perfect React website designed according to the given Figma UI and requirements PDF.  
 
 The website represents **EZ Labs’ creative and technology-driven brand**, showcasing sections like:
