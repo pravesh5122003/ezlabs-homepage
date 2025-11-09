@@ -131,8 +131,6 @@ npm run dev
   }
 }
 
-![Postman Screenshot](./public/screenshot4.png)
-
 ## 👨‍💻 Developer
 
 **Pravesh Sachan**  
