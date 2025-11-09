@@ -40,3 +40,14 @@
 .read-the-docs {
   color: #888;
 }
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body.dark {
+  background: linear-gradient(-45deg, #1e3a8a, #111827, #0f172a, #1e3a8a);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+}

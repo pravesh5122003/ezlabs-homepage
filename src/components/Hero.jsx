@@ -17,15 +17,26 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
       >
-        <h1
-          className="text-4xl md:text-6xl font-extrabold leading-tight 
-                     bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 
-                     bg-clip-text text-transparent 
-                     dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400"
-        >
-          Empowering Tech <br />
-          <span className="text-gray-900 dark:text-white">Innovation & Vision</span>
-        </h1>
+         <motion.h1
+  className="text-4xl md:text-6xl font-extrabold leading-tight 
+             bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 
+             bg-clip-text text-transparent 
+             dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400"
+  animate={{
+    x: [0, 10, 0, -10, 0],
+    y: [0, -5, 0, 5, 0]
+  }}
+  transition={{
+    duration: 10,
+    repeat: Infinity,
+    ease: "easeInOut"
+  }}
+>
+  Empowering Tech <br />
+  <span className="text-gray-900 dark:text-white">Innovation & Vision</span>
+</motion.h1>
+
+
 
         <p
           className="text-gray-700 dark:text-gray-300 text-lg md:text-xl leading-relaxed 
@@ -38,7 +49,7 @@ export default function Hero() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
           <a
-            href="#contact"
+            href="/contact"
             className="px-8 py-3 rounded-xl text-white font-semibold 
                        bg-gradient-to-r from-blue-600 to-indigo-600 
                        shadow-[0_6px_20px_rgba(79,70,229,0.3)] 
@@ -49,7 +60,7 @@ export default function Hero() {
             Get In Touch
           </a>
           <a
-            href="#services"
+            href="/services"
             className="px-8 py-3 rounded-xl font-semibold border-2 border-blue-600 text-blue-600 
                        hover:bg-blue-600 hover:text-white 
                        dark:border-indigo-400 dark:text-indigo-400 dark:hover:bg-indigo-500 dark:hover:text-white 

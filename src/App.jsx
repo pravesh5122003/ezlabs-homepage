@@ -1,8 +1,19 @@
 import React, { useEffect, useState, createContext } from "react";
+import { motion } from "framer-motion";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import AboutTeam from "./components/AboutTeam";
+import AboutUs from "./components/AboutUs";
+import Services from "./components/Services";
+import Portfolio from "./components/Portfolio";
 import ContactForm from "./components/ContactForm";
-import { motion } from "framer-motion";
+import PageTransitionWrapper from "./components/PageTransitionWrapper"; // 👈 Add this
+
+import ServiceFilm from "./components/ServiceFilm";
+import ServiceBranding from "./components/ServiceBranding";
+import ServiceArt from "./components/ServiceArt";
+
 
 // 🌗 Create Theme Context
 export const ThemeContext = createContext();
@@ -10,7 +21,6 @@ export const ThemeContext = createContext();
 function App() {
   const [theme, setTheme] = useState("light");
 
-  // 🧠 Load stored theme on mount
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme) {
@@ -19,7 +29,6 @@ function App() {
     }
   }, []);
 
-  // 🌙 Toggle handler
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
@@ -30,45 +39,33 @@ function App() {
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div
-        className={`min-h-screen font-poppins scroll-smooth transition-colors duration-700 ease-in-out 
-          ${
-            <>
-            {theme === "dark" && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.35 }}
-                transition={{ duration: 1.2 }}
-                className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-orange-500/20 blur-3xl pointer-events-none z-0"
-              />
-            )}
-          </>
-          }`}
+        className={`min-h-screen font-poppins scroll-smooth transition-colors duration-700 ease-in-out ${
+          theme === "dark"
+            ? "bg-black text-white"
+            : "bg-white text-gray-900"
+        }`}
       >
-        {/* Navbar */}
+        {/* 🔝 Navbar */}
         <Navbar />
 
-        {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <Hero />
-        </motion.div>
+        {/* 🌟 Page Transition Wrapper */}
+        <PageTransitionWrapper>
+          <Routes>
+            <Route path="/" element={<Hero />} />
+            <Route path="/AboutTeam" element={<AboutTeam />} />
+            <Route path="/AboutUs" element={<AboutUs />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/contact" element={<ContactForm />} />
+            <Route path="/services/film" element={<ServiceFilm />} />
+            <Route path="/services/branding" element={<ServiceBranding />} />
+            <Route path="/services/art" element={<ServiceArt />} />
 
-        {/* Contact Form Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <ContactForm />
-        </motion.div>
+          </Routes>
+        </PageTransitionWrapper>
       </div>
     </ThemeContext.Provider>
   );
 }
 
 export default App;
-

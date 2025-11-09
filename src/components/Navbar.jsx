@@ -1,20 +1,31 @@
 import React, { useState, useEffect, useContext } from "react";
 import { ThemeContext } from "../App";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
-  // 🌫 Shadow on scroll
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // ✅ Updated Menu List
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+    { name: "Portfolio", path: "/portfolio" },
+    { name: "About Us", path: "/AboutUs" },
+    { name: "Our Team", path: "/AboutTeam" },
+    { name: "Contact", path: "/contact" },
+  ];
 
   return (
     <header
@@ -25,34 +36,106 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Navbar Container */}
+        {/* 🔹 Main Container */}
         <div className="flex justify-between items-center h-16">
-          {/* 🔷 Brand Logo */}
+          {/* 🔷 Logo */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="flex items-center"
           >
-            <span className="text-2xl font-extrabold tracking-wide cursor-pointer bg-gradient-to-r from-blue-500 to-indigo-600 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
-              EZ<span className="text-gray-900 dark:text-gray-100">Tech</span>
-            </span>
+            <Link to="/" className="flex items-center">
+              <span className="text-2xl font-extrabold tracking-wide cursor-pointer bg-gradient-to-r from-blue-500 to-indigo-600 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
+                EZ<span className="text-gray-900 dark:text-gray-100">Tech</span>
+              </span>
+            </Link>
           </motion.div>
 
-          {/* 🔹 Right Section (Links + Toggle + Menu Button) */}
+          {/* 🔸 Right Section */}
           <div className="flex items-center space-x-6">
-            {/* Desktop Menu */}
-            <nav className="hidden md:flex space-x-8 font-medium">
-              {["Home", "Services", "Portfolio", "Contact"].map((item, index) => (
-                <motion.a
+            {/* 🧭 Desktop Menu */}
+            <nav className="hidden md:flex space-x-8 font-medium items-center">
+              {navItems.map((item, index) => (
+                <motion.div
                   key={index}
-                  href={`#${item.toLowerCase()}`}
-                  className="relative text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-indigo-400 transition-colors duration-300 group"
-                  whileHover={{ scale: 1.08 }}
+                  className="relative group"
+                  onMouseEnter={() => item.name === "Services" && setShowDropdown(true)}
+                  onMouseLeave={() => item.name === "Services" && setShowDropdown(false)}
                 >
-                  {item}
-                  <span className="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:w-full"></span>
-                </motion.a>
+                  <motion.div whileHover={{ scale: 1.08, y: -2 }} transition={{ duration: 0.3 }}>
+                    <Link
+                      to={item.path}
+                      className="relative text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-indigo-400 transition-colors duration-300 flex items-center gap-1"
+                    >
+                      {/* ⚙️ Animated Icons for Some Links */}
+                      {item.name === "Services" && (
+                        <motion.span
+                          animate={{ y: [0, -4, 0] }}
+                          transition={{ repeat: Infinity, duration: 1.5 }}
+                        >
+                          ⚙️
+                        </motion.span>
+                      )}
+                      {item.name === "Portfolio" && (
+                        <motion.span
+                          animate={{ rotate: [0, 10, -10, 0] }}
+                          transition={{ repeat: Infinity, duration: 2 }}
+                        >
+                          💼
+                        </motion.span>
+                      )}
+                      {item.name === "About Us" && (
+                        <motion.span
+                          animate={{ y: [0, -2, 0] }}
+                          transition={{ repeat: Infinity, duration: 2 }}
+                        >
+                          🌍
+                        </motion.span>
+                      )}
+                      {item.name === "Our Team" && (
+                        <motion.span
+                          animate={{ scale: [1, 1.1, 1] }}
+                          transition={{ repeat: Infinity, duration: 2 }}
+                        >
+                          👥
+                        </motion.span>
+                      )}
+                      {item.name}
+                      <span className="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300 group-hover:w-full"></span>
+                    </Link>
+                  </motion.div>
+
+                  {/* Dropdown for Services */}
+                  {item.name === "Services" && showDropdown && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                      className="absolute top-full mt-3 left-0 bg-white dark:bg-gray-900 shadow-xl dark:shadow-[0_8px_25px_rgba(255,255,255,0.08)] rounded-xl py-3 px-5 w-56 border border-gray-100 dark:border-gray-700 backdrop-blur-lg"
+                    >
+                      <Link
+                        to="/services/film"
+                        className="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-indigo-400 transition-colors duration-300"
+                      >
+                        🎬 Film Production
+                      </Link>
+                      <Link
+                        to="/services/branding"
+                        className="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-indigo-400 transition-colors duration-300"
+                      >
+                        🧠 Branding
+                      </Link>
+                      <Link
+                        to="/services/art"
+                        className="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-indigo-400 transition-colors duration-300"
+                      >
+                        🎨 Art Curation
+                      </Link>
+                    </motion.div>
+                  )}
+                </motion.div>
               ))}
             </nav>
 
@@ -63,9 +146,13 @@ export default function Navbar() {
               className="p-2 rounded-full border border-blue-400 hover:bg-blue-100 dark:hover:bg-gray-700 transition duration-300 shadow-md"
             >
               {theme === "light" ? (
-                <span role="img" aria-label="moon" className="text-lg">🌙</span>
+                <span role="img" aria-label="moon" className="text-lg">
+                  🌙
+                </span>
               ) : (
-                <span role="img" aria-label="sun" className="text-lg">☀️</span>
+                <span role="img" aria-label="sun" className="text-lg">
+                  ☀️
+                </span>
               )}
             </motion.button>
 
@@ -85,17 +172,9 @@ export default function Navbar() {
                 transition={{ duration: 0.3 }}
               >
                 {menuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                 )}
               </motion.svg>
             </button>
@@ -112,15 +191,15 @@ export default function Navbar() {
               transition={{ duration: 0.3 }}
               className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-700 mt-2 rounded-b-lg shadow-lg"
             >
-              {["Home", "Services", "Portfolio", "Contact"].map((item, index) => (
-                <a
+              {navItems.map((item, index) => (
+                <Link
                   key={index}
-                  href={`#${item.toLowerCase()}`}
+                  to={item.path}
                   onClick={() => setMenuOpen(false)}
                   className="block px-5 py-3 text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-indigo-400 font-medium transition-all duration-200"
                 >
-                  {item}
-                </a>
+                  {item.name}
+                </Link>
               ))}
             </motion.nav>
           )}
