@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export default function Portfolio() {
-  // 🎥 Replace with your actual YouTube embed URLs
+  // 🎬 Updated video playlist with working cinematic videos
   const videos = [
     {
       id: 1,
-      title: "The Art of Storytelling",
-      url: "https://www.youtube.com/embed/ysz5S6PUM-U",
+      title: "Frames of Emotion",
+      url: "https://www.youtube.com/embed/B2miC2XOZ9c", // ✅ Working video
     },
     {
       id: 2,
@@ -35,17 +35,30 @@ export default function Portfolio() {
     <section
       id="portfolio"
       className="min-h-screen flex flex-col items-center justify-center py-20 px-6 
-                 bg-[#fff6f1] dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-800
+                 bg-gradient-to-b from-[#fffaf5] via-[#fff6eb] to-white
+                 dark:from-[#0F0F0F] dark:via-[#1A1A1A] dark:to-[#000000]
                  transition-all duration-700 relative overflow-hidden"
     >
+      {/* ✨ Cinematic Background Glow */}
+      <motion.div
+        className="absolute top-0 left-0 w-80 h-80 bg-[#F97316]/20 dark:bg-[#F59E0B]/15 rounded-full blur-[100px]"
+        animate={{ opacity: [0.2, 0.5, 0.2] }}
+        transition={{ repeat: Infinity, duration: 8 }}
+      />
+      <motion.div
+        className="absolute bottom-0 right-0 w-96 h-96 bg-[#FACC15]/25 dark:bg-[#F97316]/15 rounded-full blur-[100px]"
+        animate={{ opacity: [0.3, 0.6, 0.3] }}
+        transition={{ repeat: Infinity, duration: 10 }}
+      />
+
       {/* 🎞️ Decorative Camera Background */}
-      <div className="absolute left-5 top-10 opacity-10">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/1025/1025675.png"
-          alt="camera decoration"
-          className="w-36 md:w-52 rotate-[-10deg]"
-        />
-      </div>
+      <motion.img
+        src="https://cdn-icons-png.flaticon.com/512/1025/1025675.png"
+        alt="camera decoration"
+        className="absolute left-[5%] top-[10%] w-36 md:w-52 opacity-[0.08] rotate-[-10deg]"
+        animate={{ y: [0, -10, 0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 18, ease: "easeInOut" }}
+      />
 
       {/* 🎬 Title Section */}
       <motion.div
@@ -54,11 +67,15 @@ export default function Portfolio() {
         transition={{ duration: 0.7 }}
         className="text-center mb-12"
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+        <h2
+          className="text-3xl md:text-4xl font-extrabold mb-2 
+                     bg-gradient-to-r from-[#F97316] via-[#F59E0B] to-[#FACC15]
+                     bg-clip-text text-transparent drop-shadow-[0_3px_15px_rgba(249,115,22,0.4)]"
+        >
           The Highlight Reel
         </h2>
         <p className="text-gray-600 dark:text-gray-300 text-lg">
-          Watch the magic we’ve captured.
+          Experience the motion, emotion, and magic behind every frame.
         </p>
       </motion.div>
 
@@ -67,17 +84,18 @@ export default function Portfolio() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.7 }}
-        className="relative w-full max-w-5xl border-[8px] border-gray-300 dark:border-gray-700 
-                   rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] bg-white/80 dark:bg-gray-900/80 
-                   backdrop-blur-md overflow-hidden flex items-center justify-center"
+        className="relative w-full max-w-5xl border-[6px] border-[#F59E0B]/40 dark:border-[#F97316]/30 
+                   rounded-xl shadow-[0_10px_50px_rgba(249,115,22,0.2)] 
+                   bg-white/80 dark:bg-[#0E0E0E]/80 backdrop-blur-xl 
+                   overflow-hidden flex items-center justify-center"
       >
         {/* ⬅️ Left Arrow */}
         <button
           onClick={prevVideo}
           className="absolute left-3 md:left-6 z-20 bg-white/70 dark:bg-gray-800/70 p-3 rounded-full shadow-md 
-                     hover:scale-110 transition-all duration-300 hover:bg-indigo-100 dark:hover:bg-gray-700"
+                     hover:scale-110 transition-all duration-300 hover:bg-[#FDE68A]/50 dark:hover:bg-[#F97316]/20"
         >
-          <FaChevronLeft className="text-gray-700 dark:text-gray-300 text-xl" />
+          <FaChevronLeft className="text-[#F59E0B] dark:text-[#FACC15] text-xl" />
         </button>
 
         {/* 🎞️ Video Player */}
@@ -107,24 +125,38 @@ export default function Portfolio() {
         <button
           onClick={nextVideo}
           className="absolute right-3 md:right-6 z-20 bg-white/70 dark:bg-gray-800/70 p-3 rounded-full shadow-md 
-                     hover:scale-110 transition-all duration-300 hover:bg-indigo-100 dark:hover:bg-gray-700"
+                     hover:scale-110 transition-all duration-300 hover:bg-[#FDE68A]/50 dark:hover:bg-[#F97316]/20"
         >
-          <FaChevronRight className="text-gray-700 dark:text-gray-300 text-xl" />
+          <FaChevronRight className="text-[#F59E0B] dark:text-[#FACC15] text-xl" />
         </button>
       </motion.div>
 
       {/* 🎥 Video Title */}
       <motion.h3
+        key={currentVideo.title}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="mt-8 text-xl font-semibold text-gray-800 dark:text-gray-200"
+        className="mt-8 text-xl font-semibold 
+                   bg-gradient-to-r from-[#F97316] to-[#FACC15]
+                   bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(249,115,22,0.3)]"
       >
         {currentVideo.title}
       </motion.h3>
 
-      {/* 🎬 Decorative Film Strip Footer */}
-      <div className="mt-10 w-full max-w-5xl h-[20px] bg-[repeating-linear-gradient(90deg,#d1d5db_0_20px,#f3f4f6_20px_40px)] dark:bg-[repeating-linear-gradient(90deg,#374151_0_20px,#1f2937_20px_40px)] rounded-md"></div>
+      {/* 🎬 Subheading / Description */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4, duration: 0.8 }}
+        className="mt-3 max-w-2xl text-center text-gray-700 dark:text-gray-400 text-base leading-relaxed"
+      >
+        Every frame tells a story — from concept to camera, we create visuals
+        that move, inspire, and stay with you.
+      </motion.p>
+
+      {/* 🎞️ Decorative Film Strip Footer */}
+      <div className="mt-10 w-full max-w-5xl h-[20px] bg-[repeating-linear-gradient(90deg,#fcd34d_0_20px,#fde68a_20px_40px)] dark:bg-[repeating-linear-gradient(90deg,#78350f_0_20px,#f97316_20px_40px)] rounded-md shadow-inner"></div>
     </section>
   );
 }

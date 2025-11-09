@@ -22,16 +22,16 @@ export default function PageTransitionWrapper({ children }) {
         ease: "easeOut",
       },
     },
-    exit: {
-      opacity: 0,
-      y: -20,
-      scale: 0.98,
-      filter: "blur(5px)",
-      transition: {
-        duration: 0.4,
-        ease: "easeIn",
-      },
-    },
+    // exit: {
+    //   opacity: 0,
+    //   y: -20,
+    //   scale: 0.98,
+    //   filter: "blur(5px)",
+    //   transition: {
+    //     duration: 0.4,
+    //     ease: "easeIn",
+    //   },
+    // },
   };
 
   return (
