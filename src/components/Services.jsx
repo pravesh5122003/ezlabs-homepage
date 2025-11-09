@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import filmImg from "../assets/services/film.png";
-import brandingImg from "../assets/services/branding.png";
+import brandingImg from "../assets/services/Branding.png";
 import artImg from "../assets/services/art.png";
 
 export default function Services() {
