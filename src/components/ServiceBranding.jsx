@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaRegStar, FaRegClipboard, FaUsersCog } from "react-icons/fa";
-import brandingImg from "../assets/services/branding.png";
+import brandingImg from "../assets/services/Branding.png";
 
 export default function Branding() {
   return (
