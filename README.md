@@ -22,10 +22,8 @@ The website represents **EZ Labs’ creative and technology-driven brand**, show
 ## 🧩 Features Implemented
 
 ✅ Fully Responsive Layout (Desktop → Tablet → Mobile)  
-✅ Light/Dark Mode Toggle
-✅ Animated Hero Section using **Framer Motion**  
-✅ About, Services, and Portfolio Sections 
-✅ Smooth Scroll Navigation between sections  
+✅ Light/Dark Mode Toggle and Animated Sections using **Framer Motion**  
+✅ About, Services, and Portfolio Sections and Smooth Scroll Navigation sections  
 ✅ Modern UI built using **React + Tailwind CSS + Vite**  
 ✅ Contact Form with validation (Name, Email, Phone, Message)  
 ✅ Postman Verified API Response (Status: 201 Created)  
