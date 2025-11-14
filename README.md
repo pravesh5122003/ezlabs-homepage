@@ -15,7 +15,7 @@ The website represents **EZ Labs’ creative and technology-driven brand**, show
 - Services (Film Production, Branding, Art Curation)  
 - Portfolio  
 - About us
-- Contact Form (with validation + API integration)
+- Contact Form (with validation + API integration) 
 
 ---
 
