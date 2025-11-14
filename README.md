@@ -12,7 +12,7 @@ It is a fully responsive, pixel-perfect React website designed according to the 
 
 The website represents **EZ Labs’ creative and technology-driven brand**, showcasing sections like:
 - Hero Section   
-- Services (Film Production, Branding, Art Curation)  
+- Services (Film Production, Branding, Art Curation)   
 - Portfolio  
 - About us 
 - Contact Form (with validation + API integration) 
